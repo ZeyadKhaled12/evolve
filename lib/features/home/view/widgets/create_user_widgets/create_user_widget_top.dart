@@ -46,18 +46,18 @@ class CreateUserWidgetTop extends StatelessWidget {
             controller: controllers[2],
             isError: errors[2],
             hintText: 'Email address*'),
-        GWidgetTextField(
-            controller: controllers[3],
-            isError: errors[3],
-            hintText: 'Outlet name*'),
-        GWidgetTextField(
-            controller: controllers[4],
-            isError: errors[4],
-            hintText: 'Outlet ID*'),
-        GWidgetTextField(
-            controller: controllers[5],
-            isError: errors[5],
-            hintText: 'Retail location*'),
+        // GWidgetTextField(
+        //     controller: controllers[3],
+        //     isError: errors[3],
+        //     hintText: 'Outlet name*'),
+        // GWidgetTextField(
+        //     controller: controllers[4],
+        //     isError: errors[4],
+        //     hintText: 'Outlet ID*'),
+        // GWidgetTextField(
+        //     controller: controllers[5],
+        //     isError: errors[5],
+        //     hintText: 'Retail location*'),
       ],
     );
   }

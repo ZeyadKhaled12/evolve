@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:tdh_event/core/utils/app_constance.dart';
 import 'package:tdh_event/features/auth/models/user/user.dart';
@@ -20,8 +21,7 @@ abstract class BaseHomeRemoteDataSource {
 class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
   @override
   Future<UserForm> addUser(AddUserFormParameters addUserFormParameters) async {
-    print('ADD USER FORM');
-    if (GeneralFun.checkEmailFormat(addUserFormParameters.userForm.email!)) {
+    if (!GeneralFun.checkEmailFormat(addUserFormParameters.userForm.email!)) {
       throw const ServerException(
           ErrorMessageModel(statusMessage: 'Email badly formatted'));
     }

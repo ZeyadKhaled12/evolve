@@ -24,21 +24,21 @@ class GWidgetCardDetail extends StatelessWidget {
           if (userModel.email != null)
             TitleValueWidget(
                 iconData: Icons.email, title: 'Email', value: userModel.email),
-          if (userModel.outletName != null)
-            TitleValueWidget(
-                iconData: Icons.circle,
-                title: 'Outlet name',
-                value: userModel.outletName),
-          if (userModel.outletId != null)
-            TitleValueWidget(
-                iconData: Icons.circle,
-                title: 'Outlet id',
-                value: userModel.outletId),
-          if (userModel.retailLocation != null)
-            TitleValueWidget(
-                iconData: Icons.location_history_rounded,
-                title: 'Retail location',
-                value: userModel.retailLocation),
+          // if (userModel.outletName != null)
+          //   TitleValueWidget(
+          //       iconData: Icons.circle,
+          //       title: 'Outlet name',
+          //       value: userModel.outletName),
+          // if (userModel.outletId != null)
+          //   TitleValueWidget(
+          //       iconData: Icons.circle,
+          //       title: 'Outlet id',
+          //       value: userModel.outletId),
+          // if (userModel.retailLocation != null)
+          //   TitleValueWidget(
+          //       iconData: Icons.location_history_rounded,
+          //       title: 'Retail location',
+          //       value: userModel.retailLocation),
           if (userModel.mobile != null)
             TitleValueWidget(
                 iconData: Icons.phone_android,
@@ -57,16 +57,16 @@ class GWidgetCardDetail extends StatelessWidget {
           if (userModel.age != null)
             TitleValueWidget(
                 iconData: Icons.date_range, title: 'Age', value: userModel.age),
-          if (userModel.giftReceived != null)
-            TitleValueWidget(
-                iconData: Icons.card_giftcard,
-                title: 'Gift Received',
-                value: userModel.giftReceived),
-          if (userModel.refusal != null)
-            TitleValueWidget(
-                iconData: Icons.question_mark,
-                title: 'Refusal reason',
-                value: userModel.refusal),
+          // if (userModel.giftReceived != null)
+          //   TitleValueWidget(
+          //       iconData: Icons.card_giftcard,
+          //       title: 'Gift Received',
+          //       value: userModel.giftReceived),
+          // if (userModel.refusal != null)
+          //   TitleValueWidget(
+          //       iconData: Icons.question_mark,
+          //       title: 'Refusal reason',
+          //       value: userModel.refusal),
           if (userModel.smoker != null)
             TitleValueWidget(
                 checkedTrue: bool.parse(userModel.smoker!),

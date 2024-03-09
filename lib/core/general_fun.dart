@@ -5,7 +5,7 @@ class GeneralFun {
       caseSensitive: false,
       multiLine: false,
     );
-    if (!emailRegExp.hasMatch(email)) {
+    if (emailRegExp.hasMatch(email)) {
       return true;
     }
     return false;

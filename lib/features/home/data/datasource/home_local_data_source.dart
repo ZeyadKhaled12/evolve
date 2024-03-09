@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdh_event/features/auth/models/user/user.dart';
+import '../../../../core/general_fun.dart';
+import '../../../../core/network/error_message_model.dart';
+import '../../../../core/network/exception.dart';
 import '../../../../core/utils/app_constance.dart';
 import '../../models/user_form.dart';
 
@@ -30,6 +33,10 @@ class HomeLocalDataSource extends BaseHomeLocalDataSource {
 
   @override
   Future<List<UserForm>> setUsers(UserForm userModel) async {
+    if (!GeneralFun.checkEmailFormat(userModel.email!)) {
+      throw const ServerException(
+          ErrorMessageModel(statusMessage: 'Email badly formatted'));
+    }
     List<UserForm> users = await getUsers();
     users.add(userModel);
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

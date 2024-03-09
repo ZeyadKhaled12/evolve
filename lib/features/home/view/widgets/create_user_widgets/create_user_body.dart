@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +7,7 @@ import 'package:tdh_event/core/utils/enums.dart';
 import 'package:tdh_event/features/auth/models/user/user.dart';
 import 'package:tdh_event/features/home/controllers/home_controller.dart';
 import 'package:tdh_event/features/home/data/parameters/add_user_form_parameters.dart';
+import '../../../../../core/general_fun.dart';
 import '../../../../../core/general_widgets/g_widget_button.dart';
 import '../../../../../core/general_widgets/g_widget_snack_bar.dart';
 import '../../../models/user_form.dart';
@@ -22,13 +25,13 @@ class CreateUserBody extends StatefulWidget {
 class _CreateUserBodyState extends State<CreateUserBody> {
   final HomeController controller = Get.find();
   final List<TextEditingController> controllers =
-      List.generate(6, (index) => TextEditingController());
-  final List<bool> errorsTop = List.generate(6, (index) => false);
+      List.generate(3, (index) => TextEditingController());
+  final List<bool> errorsTop = List.generate(3, (index) => false);
 
-  final List<bool> errorsBot = List.generate(8, (index) => false);
-  final List<String> dtopDownChosen = List.generate(6, (index) => '');
+  final List<bool> errorsBot = List.generate(6, (index) => false);
+  final List<String> dtopDownChosen = List.generate(4, (index) => '');
   final TextEditingController phoneNumberController = TextEditingController();
-  final TextEditingController refusalReasonController = TextEditingController();
+  final TextEditingController brandSmokedController = TextEditingController();
   bool isSmokedChecked = false;
   CountryCode countryCode = CountryCode.fromCountryCode('SA');
 
@@ -49,7 +52,7 @@ class _CreateUserBodyState extends State<CreateUserBody> {
                   errors: errorsBot,
                   isSmokedChecked: isSmokedChecked,
                   numberController: phoneNumberController,
-                  refusalReason: refusalReasonController,
+                  brandSmokedController: brandSmokedController,
                   onChanged: (value) {
                     setState(() {
                       countryCode = value;
@@ -83,16 +86,6 @@ class _CreateUserBodyState extends State<CreateUserBody> {
                                 dtopDownChosen[3] = value;
                               });
                             }
-                            if (index == 4) {
-                              setState(() {
-                                dtopDownChosen[4] = value;
-                              });
-                            }
-                            if (index == 5) {
-                              setState(() {
-                                dtopDownChosen[5] = value;
-                              });
-                            }
                           }),
                 ),
                 Align(
@@ -109,38 +102,34 @@ class _CreateUserBodyState extends State<CreateUserBody> {
                             errorsTop[i] = controllers[i].text.isEmpty;
                           });
                         }
-                        for (int i = 2; i < errorsBot.length - 2; i++) {
-                          setState(() {
-                            errorsBot[i] = dtopDownChosen[i - 1].isEmpty;
-                          });
-                        }
-                        if (isSmokedChecked) {
-                          errorsBot[6] = dtopDownChosen[4].isEmpty;
-                          errorsBot[7] = dtopDownChosen[5].isEmpty;
-                        }
                         setState(() {
                           errorsBot[0] = phoneNumberController.text.isEmpty;
-                          errorsBot[1] = refusalReasonController.text.isEmpty;
                         });
+                        setState(() {
+                          errorsBot[1] = dtopDownChosen[0].isEmpty;
+                          errorsBot[2] = dtopDownChosen[1].isEmpty;
+                          errorsBot[3] = dtopDownChosen[2].isEmpty;
+                        });
+
+                        if (isSmokedChecked) {
+                          errorsBot[4] = brandSmokedController.text.isEmpty;
+                          errorsBot[5] = dtopDownChosen[3].isEmpty;
+                        }
+
                         if (!errorsTop.contains(true) &&
                             !errorsBot.contains(true)) {
                           UserForm userForm = UserForm(
                               fName: controllers[0].text,
                               lName: controllers[1].text,
                               email: controllers[2].text,
-                              outletName: controllers[3].text,
-                              outletId: controllers[4].text,
-                              retailLocation: controllers[5].text,
                               mobile: phoneNumberController.text,
                               nationality: dtopDownChosen[0],
                               city: dtopDownChosen[1],
                               age: dtopDownChosen[2],
                               countryCode: countryCode.code,
-                              giftReceived: dtopDownChosen[3],
-                              refusal: refusalReasonController.text,
                               smoker: isSmokedChecked.toString(),
-                              brandSmokedBefore: dtopDownChosen[4],
-                              brandSelectedNow: dtopDownChosen[5]);
+                              brandSmokedBefore: brandSmokedController.text,
+                              brandSelectedNow: dtopDownChosen[3]);
                           await controller.setUsers(AddUserFormParameters(
                               userForm: userForm, token: widget.user.token!));
                           if (mounted) {

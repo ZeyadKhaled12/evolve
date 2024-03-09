@@ -21,9 +21,10 @@ class DummyData {
   ];
 
   static List<String> smokeDavidoff = const [
-    'Davidoff PL',
-    'Davidoff Evolve',
-    'Davidoff West'
+    'Davidoff Evolve Blue',
+    'Davidoff Evolve Red',
+    'Davidoff Evolve Silver',
+    'Davidoff Evolve Dual Edge'
   ];
 
   static List<String> city = [

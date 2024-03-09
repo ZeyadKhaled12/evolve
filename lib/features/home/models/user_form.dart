@@ -1,4 +1,3 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,13 +10,13 @@ class UserForm extends Equatable {
   final String? city;
   final String? age;
   final String? smoker;
-  final String? retailLocation;
+  // final String? retailLocation;
   final String? brandSmokedBefore;
   final String? brandSelectedNow;
-  final String? giftReceived;
-  final String? refusal;
-  final String? outletName;
-  final String? outletId;
+  // final String? giftReceived;
+  // final String? refusal;
+  // final String? outletName;
+  // final String? outletId;
   final String? countryCode;
   final DateTime? updatedAt;
   final DateTime? createdAt;
@@ -32,13 +31,13 @@ class UserForm extends Equatable {
     this.city,
     this.age,
     this.smoker,
-    this.retailLocation,
+    // this.retailLocation,
     this.brandSmokedBefore,
     this.brandSelectedNow,
-    this.giftReceived,
-    this.refusal,
-    this.outletName,
-    this.outletId,
+    // this.giftReceived,
+    // this.refusal,
+    // this.outletName,
+    // this.outletId,
     this.countryCode,
     this.updatedAt,
     this.createdAt,
@@ -51,17 +50,17 @@ class UserForm extends Equatable {
         email: json['email'] as String?,
         mobile: json['mobile'] as String?,
         countryCode: json['countryCode'] as String?,
-        outletId: json['outlet_name'] as String?,
-        outletName: json['outlet_id'] as String?,
+        // outletId: json['outlet_name'] as String?,
+        // outletName: json['outlet_id'] as String?,
         nationality: json['nationality'] as String?,
         city: json['city'] as String?,
         age: json['age'] as String?,
         smoker: json['smoker'] as String?,
-        retailLocation: json['retail_location'] as String?,
+        // retailLocation: json['retail_location'] as String?,
         brandSmokedBefore: json['brand_smoked_before'] as String?,
         brandSelectedNow: json['brand_selected_now'] as String?,
-        giftReceived: json['gift_received'] as String?,
-        refusal: json['refusal'] as String?,
+        // giftReceived: json['gift_received'] as String?,
+        // refusal: json['refusal'] as String?,
         updatedAt: json['updated_at'] == null
             ? null
             : DateTime.parse(json['updated_at'] as String),
@@ -80,10 +79,10 @@ class UserForm extends Equatable {
       ..fields['nationality'] = nationality!
       ..fields['city'] = city!
       ..fields['age'] = age!
-      ..fields['smoker'] = smoker.toString()
-      ..fields['retail_location'] = retailLocation!
-      ..fields['gift_received'] = giftReceived!
-      ..fields['refusal'] = refusal!;
+      ..fields['smoker'] = smoker.toString();
+    // ..fields['retail_location'] = retailLocation!;
+    // ..fields['gift_received'] = giftReceived!
+    // ..fields['refusal'] = refusal!;
     if (brandSelectedNow != null) {
       req.fields['brand_smoked_before'] = brandSmokedBefore!;
     }
@@ -102,14 +101,14 @@ class UserForm extends Equatable {
         'nationality': nationality,
         'city': city,
         'age': age,
-        'outlet_name': outletName,
-        'outlet_id': outletId,
+        // 'outlet_name': outletName,
+        // 'outlet_id': outletId,
         'smoker': smoker,
-        'retail_location': retailLocation,
+        // 'retail_location': retailLocation,
         'brand_smoked_before': brandSmokedBefore,
         'brand_selected_now': brandSelectedNow,
-        'gift_received': giftReceived,
-        'refusal': refusal,
+        // 'gift_received': giftReceived,
+        // 'refusal': refusal,
         'updated_at': updatedAt?.toIso8601String(),
         'created_at': createdAt?.toIso8601String(),
         'id': id,
@@ -126,11 +125,11 @@ class UserForm extends Equatable {
       city,
       age,
       smoker,
-      retailLocation,
+      // retailLocation,
       brandSmokedBefore,
       brandSelectedNow,
-      giftReceived,
-      refusal,
+      // giftReceived,
+      // refusal,
       countryCode,
       updatedAt,
       createdAt,
